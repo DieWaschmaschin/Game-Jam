@@ -11,3 +11,5 @@ Wer das liest ist doof
 * Nicht letzter Platz
 * Spiel fertig stellen
 * Sollte für uns spaß machen
+
+# Konflikt
