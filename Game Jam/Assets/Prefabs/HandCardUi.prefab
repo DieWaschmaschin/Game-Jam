@@ -437,3 +437,4 @@ MonoBehaviour:
   _artwork: {fileID: 7031299588012990112}
   _name: {fileID: 4903438598866651875}
   _weight: {fileID: 3659413496888746978}
+  _pointerData: {fileID: 11400000, guid: 15934c74727ecee408f00dfd2f8f7bad, type: 2}

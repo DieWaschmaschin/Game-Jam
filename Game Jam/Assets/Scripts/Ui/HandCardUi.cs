@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private Image _artwork;
@@ -13,6 +13,9 @@ public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private TextMeshProUGUI _name;
     [SerializeField]
     private TextMeshProUGUI _weight;
+
+    [SerializeField]
+    private PointerData _pointerData;
 
     private Vector2 _originalSize;
     private Card _card;
@@ -39,18 +42,51 @@ public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        SetCardSize(1.2f);
+    }
+
+    private void SetCardSize(float factor = 1.0f)
+    {
         var recttransform = (RectTransform)transform;
-        recttransform.sizeDelta = _originalSize * 1.2f;
+        recttransform.sizeDelta = _originalSize * factor;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        var recttransform = (RectTransform)transform;
-        recttransform.sizeDelta = _originalSize;
+        SetCardSize();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        _parent.Remove(_card);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        SetCardSize();
+        _pointerData?.Set(true, eventData.position);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        _pointerData?.Set(true, eventData.position);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        _pointerData?.Set(false, eventData.position);
+        // If we can build there, we build the building and remove the card
+        if(build())
+        {
+            _parent.Remove(_card);
+        }
+    }
+
+    /// <summary>
+    /// @todo: implement - but this should not be here, maybe a building manager?
+    /// </summary>
+    /// <returns></returns>
+    private bool build()
+    {
+        return true;
     }
 }
