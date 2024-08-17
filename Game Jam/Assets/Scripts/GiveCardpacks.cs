@@ -7,11 +7,10 @@ public class GiveCardpacks : MonoBehaviour
     public Vector3 cardpackPos1;
     public Vector3 cardpackPos2;
 
-    private GameObject cardpack1;
-    private GameObject cardpack2;
+    public GameObject cardpack;
 
-    public List <GameObject> cardpacks = new List<GameObject>();
-    private List <GameObject> newCardpacks = new List<GameObject>();
+    public List<string> types = new List<string>();
+    private List <string> newTypes = new List<string>();
     
     static public int decksize = 0;
 
@@ -20,7 +19,6 @@ public class GiveCardpacks : MonoBehaviour
         if(decksize == 0)
         {
             SelectNewCardpacks();
-            SpawnCardpacks();
             decksize = 5;
         }
     }
@@ -28,16 +26,17 @@ public class GiveCardpacks : MonoBehaviour
 
     private void SelectNewCardpacks()
     {
-        newCardpacks.AddRange(cardpacks);
-        cardpack1 = newCardpacks[Random.Range(0, newCardpacks.Count)];
-        newCardpacks.Remove(cardpack1);
-        cardpack2 = newCardpacks[Random.Range(0, newCardpacks.Count)];
-        newCardpacks.Clear();
-    }
+        newTypes.AddRange(types);
 
-    private void SpawnCardpacks()
-    {
-        Instantiate(cardpack1, cardpackPos1, transform.rotation);
-        Instantiate(cardpack2, cardpackPos2, transform.rotation);
+        GameObject cardpack1 = Instantiate(cardpack, cardpackPos1, transform.rotation);
+        cardpack1.GetComponent<SelectPack>().type = newTypes[Random.Range(0, newTypes.Count)];
+        cardpack1.GetComponent<CardpackAnim>().Enteranimation1();
+
+        newTypes.Remove(cardpack1.GetComponent<SelectPack>().type);
+        GameObject cardpack2 = Instantiate(cardpack, cardpackPos2, transform.rotation);
+        cardpack2.GetComponent<SelectPack>().type = newTypes[Random.Range(0, newTypes.Count)];
+        cardpack2.GetComponent<CardpackAnim>().Enteranimation2();
+
+        newTypes.Clear();
     }
 }

@@ -472,10 +472,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardpackPos1: {x: -2, y: 0, z: 0}
   cardpackPos2: {x: 2, y: 0, z: 0}
-  cardpacks:
-  - {fileID: 5871779526476123811, guid: 8f6acd76a9bd506498394e9be8bfac25, type: 3}
-  - {fileID: 2678448180214020980, guid: b41cd99b601932e43ad47964adb4b7ce, type: 3}
-  - {fileID: 2678448180214020980, guid: e143bca748601d343b78d301169424e1, type: 3}
+  cardpack: {fileID: 2678448180214020980, guid: 2563ceea49195024181d65d464dc3893,
+    type: 3}
+  types:
+  - food
+  - fun
+  - housing
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6,6 +6,5 @@ using UnityEngine;
 public class Cardpack : ScriptableObject 
 {
     public Sprite artwork;
-    
     public new string name; 
 }
