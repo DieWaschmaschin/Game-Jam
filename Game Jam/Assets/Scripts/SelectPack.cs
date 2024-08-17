@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 
 public class SelectPack : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class SelectPack : MonoBehaviour
 
     public SpriteRenderer rend;
     public TextMeshPro text;
+
+    [SerializeField]
+    private HandCards _handCards;
 
     private void Start() 
     {
@@ -39,6 +43,8 @@ public class SelectPack : MonoBehaviour
 
         if(Input.GetButton("Left"))
         {
+            var cards = cardpack.InstantiateCardPack();
+            _handCards.Add(cards);
             transform.localScale = normSize;
             GetComponent<GiveCards>().type = type;
             GetComponent<GiveCards>().PackChoosen();

@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   artwork: {fileID: 21300000, guid: bf351e4063349e649a603ed2b3cc1a84, type: 3}
   name: housing
+  PossibleCards:
+  - {fileID: 11400000, guid: 44bd5da78f073a4478580484654640a0, type: 2}
+  - {fileID: 11400000, guid: 63cc2828eef4aab48a925715cba7efa1, type: 2}
+  - {fileID: 11400000, guid: 3b01ce31955b780458af379fedaf021e, type: 2}

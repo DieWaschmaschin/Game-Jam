@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
-public class Card : ScriptableObject 
+public class Card : ScriptableObject
 {
     public Sprite artwork;
-    
+
     public new string name;
     public float weight;
 
@@ -27,5 +27,5 @@ public class Card : ScriptableObject
         {
             Debug.Log(name + ": Weight: " + weight + " Population: " + population + " Food: " + food + " Entertainment: " + entertainment + " Special ability: " + specialAbility);
         }
-    }   
+    }
 }

@@ -251,6 +251,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b875738b44725a4a92470a3991ff8f6, type: 2}
   rend: {fileID: 631907886321792400}
   text: {fileID: 2743514614014193046}
+  _handCards: {fileID: 11400000, guid: adc7bfe47796a634c841629a1a16db76, type: 2}
 --- !u!114 &7128467318035327665
 MonoBehaviour:
   m_ObjectHideFlags: 0

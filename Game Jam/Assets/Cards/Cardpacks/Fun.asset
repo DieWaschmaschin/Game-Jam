@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   artwork: {fileID: 21300000, guid: fd685697cab19ff4ca4780f8f619aeb6, type: 3}
   name: fun
+  PossibleCards:
+  - {fileID: 11400000, guid: d344bfc49d7325e4ca5c3b142f3fedbd, type: 2}
+  - {fileID: 11400000, guid: 0619f2ac541bda24eaddacc98c745608, type: 2}
+  - {fileID: 11400000, guid: a93f248fadf63e84bb1c08e52e6fb86a, type: 2}
