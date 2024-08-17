@@ -46,8 +46,6 @@ public class SelectPack : MonoBehaviour
             var cards = cardpack.InstantiateCardPack();
             _handCards.Add(cards);
             transform.localScale = normSize;
-            GetComponent<GiveCards>().type = type;
-            GetComponent<GiveCards>().PackChoosen();
             selected = true;
         }
     }
