@@ -49,6 +49,7 @@ public class HandCardPanelUi : MonoBehaviour
 
     public void Remove(Card card)
     {
+        Debug.Log($"Removing {card.name}");
         _handCards.Remove(card);
     }
 }

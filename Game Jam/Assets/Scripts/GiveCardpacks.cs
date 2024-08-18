@@ -4,39 +4,65 @@ using UnityEngine;
 
 public class GiveCardpacks : MonoBehaviour
 {
-    public Vector3 cardpackPos1;
-    public Vector3 cardpackPos2;
+    [SerializeField]
+    private Cardpack _firstCardpack;
 
-    public GameObject cardpack;
+    [SerializeField]
+    private HandCards _handCards;
 
-    public List<string> types = new List<string>();
-    private List <string> newTypes = new List<string>();
-    
-    static public int decksize = 0;
+    [SerializeField]
+    private CardPackDecision _currentCardpacks;
 
-    void Update()
+    [SerializeField]
+    private List<Cardpack> _cardpacks = new List<Cardpack>();
+
+    private void Start()
     {
-        if(decksize == 0)
+        HandOutFirstCardPack();
+    }
+
+    private void HandOutFirstCardPack()
+    {
+        if (_handCards == null)
         {
-            SelectNewCardpacks();
-            decksize = 5;
+            Debug.LogError("No hand cards set");
+            return;
+        }
+        var cards = _firstCardpack.InstantiateCardPack();
+        _handCards.Add(cards);
+    }
+
+    private void OnEnable()
+    {
+        if (_handCards != null)
+        {
+            _handCards.OnHandCardsChanged += PresentCardpacks;
         }
     }
 
-
-    private void SelectNewCardpacks()
+    private void OnDisable()
     {
-        newTypes.AddRange(types);
+        if (_handCards != null)
+        {
+            _handCards.OnHandCardsChanged -= PresentCardpacks;
+        }
+    }
 
-        GameObject cardpack1 = Instantiate(cardpack, cardpackPos1, transform.rotation);
-        cardpack1.GetComponent<SelectPack>().type = newTypes[Random.Range(0, newTypes.Count)];
-        cardpack1.GetComponent<CardpackAnim>().Enteranimation1();
+    private void PresentCardpacks()
+    {
+        if(_handCards.CurrentCards.Count != 0)
+        {
+            _currentCardpacks.Unset();
+            return;
+        }
 
-        newTypes.Remove(cardpack1.GetComponent<SelectPack>().type);
-        GameObject cardpack2 = Instantiate(cardpack, cardpackPos2, transform.rotation);
-        cardpack2.GetComponent<SelectPack>().type = newTypes[Random.Range(0, newTypes.Count)];
-        cardpack2.GetComponent<CardpackAnim>().Enteranimation2();
+        List<Cardpack> newCardpacks = new List<Cardpack>();
+        newCardpacks.AddRange(_cardpacks);
 
-        newTypes.Clear();
+        //spawn two random cardpacks from our selection
+        Cardpack lhs = newCardpacks[Random.Range(0, newCardpacks.Count)];
+        newCardpacks.Remove(lhs);
+        Cardpack rhs = newCardpacks[Random.Range(0, newCardpacks.Count)];
+        _currentCardpacks.Set(lhs, rhs);
     }
 }

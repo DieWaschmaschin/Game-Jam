@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 [CreateAssetMenu()]
 public class HandCards : ScriptableObject
@@ -44,7 +44,7 @@ public class HandCards : ScriptableObject
     {
         switch (state)
         {
-            case PlayModeStateChange.EnteredPlayMode:
+            case PlayModeStateChange.ExitingPlayMode:
                 CurrentCards.Clear();
                 break;
             default:

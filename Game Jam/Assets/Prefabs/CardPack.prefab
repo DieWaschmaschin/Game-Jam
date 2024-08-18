@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 6835844284936451527}
   - component: {fileID: 3803794871761522484}
   - component: {fileID: 8615930792060925881}
-  - component: {fileID: 7128467318035327665}
   - component: {fileID: 6938887287235149809}
   - component: {fileID: 449572968085950587}
   - component: {fileID: 3674623291274502875}
@@ -252,25 +251,6 @@ MonoBehaviour:
   rend: {fileID: 631907886321792400}
   text: {fileID: 2743514614014193046}
   _handCards: {fileID: 11400000, guid: adc7bfe47796a634c841629a1a16db76, type: 2}
---- !u!114 &7128467318035327665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2678448180214020980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91cdcc9df56c07478ef85598a665f54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 2256852065600486457, guid: 275de2b062897da4ebb96df37c069750, type: 3}
-  type: 
-  deckPos1: {x: 0, y: -3.5, z: 0}
-  deckPos2: {x: -2.5, y: -3.5, z: 0}
-  deckPos3: {x: -5, y: -3.5, z: 0}
-  deckPos4: {x: 2.5, y: -3.5, z: 0}
-  deckPos5: {x: 5, y: -3.5, z: 0}
 --- !u!212 &6938887287235149809
 SpriteRenderer:
   m_ObjectHideFlags: 0
