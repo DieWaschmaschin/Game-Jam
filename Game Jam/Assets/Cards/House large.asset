@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77cff98e9fd44f438b281695ad4bdce, type: 3}
   m_Name: House large
   m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 6995318768060988527, guid: d1e34620f831b9440965ee7b42418118,
+    type: 3}
   artwork: {fileID: 21300000, guid: 04b9ffbeeb794a7488354a407edb33a5, type: 3}
   name: House Large
   weight: 30
   population: 15
   food: 0
   entertainment: 0
+  scaleCard: 0
+  specialAbility: 0

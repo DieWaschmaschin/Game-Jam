@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77cff98e9fd44f438b281695ad4bdce, type: 3}
   m_Name: House middle
   m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 8985990104880752879, guid: 623637074fe89b24d882e3c2e8af36a3,
+    type: 3}
   artwork: {fileID: 21300000, guid: 2ce1bbf8ade475d42bd42f48a2b47b00, type: 3}
   name: House middle
   weight: 20
   population: 10
   food: 0
   entertainment: 0
+  scaleCard: 0
+  specialAbility: 0
