@@ -18,3 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44bd5da78f073a4478580484654640a0, type: 2}
   - {fileID: 11400000, guid: 63cc2828eef4aab48a925715cba7efa1, type: 2}
   - {fileID: 11400000, guid: 3b01ce31955b780458af379fedaf021e, type: 2}
+  AdditionalCards:
+  - {fileID: 11400000, guid: f3ab9288e083e7940b80f891138b4959, type: 2}
+  - {fileID: 11400000, guid: e1fae24105ee50f4da89f13d63e2104f, type: 2}

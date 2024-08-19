@@ -9,6 +9,7 @@ public class Cardpack : ScriptableObject
     public new string name;
 
     public List<Card> PossibleCards = new List<Card>();
+    public List<Card> AdditionalCards = new List<Card>();
 
     public List<Card> InstantiateCardPack()
     {
@@ -17,6 +18,13 @@ public class Cardpack : ScriptableObject
         {
             Card randomCard = PossibleCards[Random.Range(0, PossibleCards.Count)];
             cards.Add(Instantiate(randomCard));
+        }
+
+        List<Card> additionalCards = new List<Card>();
+        for (int i = 0; i < 2; i++)
+        {
+            Card randomCard = AdditionalCards[Random.Range(0, PossibleCards.Count)];
+            cards.Add(Instantiate(randomCard).Collapse());
         }
         return cards;
     }
