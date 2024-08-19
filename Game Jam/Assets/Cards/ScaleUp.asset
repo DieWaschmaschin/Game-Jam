@@ -19,9 +19,7 @@ MonoBehaviour:
   population: 0
   food: 0
   entertainment: 0
-  scaleCard: 1
-  scaleWidthRange: {x: 0, y: 0}
-  scaleHeightRange: {x: 5, y: 15}
-  scaleWidth: 0
-  scaleHeight: 0
+  cardType: 1
+  scaleRange: {x: 5, y: 35}
+  scale: 0
   specialAbility: 0

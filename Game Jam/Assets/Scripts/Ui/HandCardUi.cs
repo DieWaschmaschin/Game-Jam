@@ -27,14 +27,13 @@ public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         _parent = parent;
         _artwork.sprite = card.artwork;
         _name.text = card.name;
-        if(card.scaleCard)
+        if(card.cardType != CardType.Normal)
         {
-            _weight.enabled = false;
+            _weight.text = $"{card.scale} %";
         }
         else
         {
-            _weight.enabled = true;
-            _weight.text = $"{card.weight}";
+            _weight.text = $"{card.weight} <sprite=0>";
         }
         _originalSize = ((RectTransform)transform).sizeDelta;
         return this;

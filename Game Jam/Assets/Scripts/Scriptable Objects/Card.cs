@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CardType
+{
+    Normal,
+    ScaleHeight,
+    ScaleWidth,
+}
+
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
@@ -15,18 +22,15 @@ public class Card : ScriptableObject
     public int food;
     public int entertainment;
 
-    public bool scaleCard;
+    public CardType cardType;
     [SerializeField]
-    private Vector2 scaleWidthRange;
-    [SerializeField]
-    private Vector2 scaleHeightRange;
-    public float scaleWidth;
-    public float scaleHeight;
+    private Vector2 scaleRange;
+    public float scale;
     public bool specialAbility;
 
     public void Print()
     {
-        if(scaleCard == true)
+        if(cardType != CardType.Normal)
         {
             Debug.Log(name);
         }
@@ -42,24 +46,14 @@ public class Card : ScriptableObject
     /// <returns></returns>
     public Card Collapse()
     {
-        if (scaleCard)
+        if (cardType == CardType.Normal)
         {
-            bool width = Random.value > 0.5f;
-            if (width)
-            {
-                float randomWidth = Random.value * scaleWidthRange.y + scaleWidthRange.x;
-                randomWidth = Mathf.Round(randomWidth * 100);
-                randomWidth /= 100;
-                scaleWidth = randomWidth;
-            }
-            else
-            {
-                float randomHeight = Random.value * scaleHeightRange.y + scaleHeightRange.x;
-                randomHeight = Mathf.Round(randomHeight * 100);
-                randomHeight /= 100;
-                scaleWidth = randomHeight;
-            }
+            throw new System.ArgumentException("Only scale cards can be collapsed");
         }
+        float randomWidth = Random.Range(scaleRange.x, scaleRange.y);
+        randomWidth = Mathf.Round(randomWidth / 5);
+        randomWidth *= 5;
+        scale = Mathf.Round(randomWidth);
         return this;
     }
 }
