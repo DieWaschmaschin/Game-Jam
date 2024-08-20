@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public float population;
     public float food;
 
-    [SerializeField]
     /// <summary>
     /// How many people are hungry
     /// </summary>
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
             position.z = 0f;
             Instantiate(card.objectToSpawn, position, Quaternion.identity, transform)
                 .GetComponent<Building>()
-                .AddStats();
+                .AddStats(card);
             OnBuild?.Invoke();
             return true;
         }

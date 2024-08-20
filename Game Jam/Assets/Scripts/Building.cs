@@ -14,8 +14,29 @@ public class Building : MonoBehaviour
     private bool broken = false;
     private bool off = false;
 
-    public void AddStats()
+    private Bowl _bowl;
+
+    private void OnCollisionEnter(Collision collision)
     {
+        if (_bowl != null)
+        {
+            return;
+        }
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down);
+        foreach (RaycastHit hit in hits)
+        {
+            Bowl bowl = hit.collider.GetComponent<Bowl>();
+            if (bowl != null)
+            {
+                _bowl = bowl;
+                bowl.AddWeight(this);
+            }
+        }
+    }
+
+    public void AddStats(Card card)
+    {
+        weight = card.weight;
         GameManager.Instance.population += population;
         GameManager.Instance.food += food;
         GameManager.Instance.entertainment += entertainment;
@@ -53,6 +74,7 @@ public class Building : MonoBehaviour
             }
             GameManager.Instance.happiness -= 10;
             off = true;
+            _bowl?.RemoveWeight(this);
         }
     }
 
