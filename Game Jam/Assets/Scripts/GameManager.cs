@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
+
+    private float foodRound;
     public float population;
     public float food;
     private float hungry;
@@ -60,12 +62,34 @@ public class GameManager : MonoBehaviour
     {
         if(newPack == true)
         {
+            foodRound = food;
+
             if(population > food)
             {
-                if(hungry - food > 0)
+                foodRound = starving - foodRound;
+                if(foodRound > 0)
+                {
+                    starving -= food;
+                }
+                else
+                {
+                    starving = 0;
+                }
+
+                foodRound = hungry - foodRound;
+                if(foodRound > 0)
+                {
+
+                }
+
+
+            
+
+
+                /*if(hungry - food > 0)
                 {
                     starving = hungry - food;
-                    hungry = population - food - starving;
+                    hungry = population - starving;
                 }
                 else if(hungry - food == 0)
                 {
@@ -80,9 +104,9 @@ public class GameManager : MonoBehaviour
                     {
                         hungry = 0;
                     }
-                }
-                /*Debug.Log("Hungry: " + hungry);
-                Debug.Log("Starving: " + starving);*/
+                }*/
+                Debug.Log("Hungry: " + hungry);
+                Debug.Log("Starving: " + starving);
             }
 
             newPack = false;
