@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
-
-    private float foodRound;
     public float population;
     public float food;
-    private float hungry;
-    private float starving;
-    
-    public float entertainment ;
+
+    [SerializeField]
+    /// <summary>
+    /// How many people are hungry
+    /// </summary>
+    private float _hungry;
+
+    public float entertainment;
     public float happiness;
 
     public bool newPack;
+
+    public UnityEvent OnNewPack;
+    public UnityEvent OnBuild;
+    public UnityEvent OnEndGame;
 
     private void Awake()
     {
@@ -41,6 +48,7 @@ public class GameManager : MonoBehaviour
             Instantiate(card.objectToSpawn, position, Quaternion.identity, transform)
                 .GetComponent<Building>()
                 .AddStats();
+            OnBuild?.Invoke();
             return true;
         }
         else
@@ -51,7 +59,12 @@ public class GameManager : MonoBehaviour
                 Building building = hitInfo.collider.GetComponent<Building>();
                 if(building != null)
                 {
-                    return building.Scale(card.cardType, card.scale);
+                    bool success = building.Scale(card.cardType, card.scale);
+                    if (success)
+                    {
+                        OnBuild?.Invoke();
+                    }
+                    return success;
                 }
             }
         }
@@ -62,51 +75,24 @@ public class GameManager : MonoBehaviour
     {
         if(newPack == true)
         {
-            foodRound = food;
+            OnNewPack?.Invoke();
 
-            if(population > food)
+            float foodThisRound = food;
+            if(_hungry <= foodThisRound)
             {
-                foodRound = starving - foodRound;
-                if(foodRound > 0)
-                {
-                    starving -= food;
-                }
-                else
-                {
-                    starving = 0;
-                }
+                foodThisRound -= _hungry;
+                _hungry = 0;
+            }
+            else
+            {
+                _hungry -= foodThisRound;
+                population -= _hungry;
+                foodThisRound = 0;
+            }
 
-                foodRound = hungry - foodRound;
-                if(foodRound > 0)
-                {
-
-                }
-
-
-            
-
-
-                /*if(hungry - food > 0)
-                {
-                    starving = hungry - food;
-                    hungry = population - starving;
-                }
-                else if(hungry - food == 0)
-                {
-                    starving = 0;
-                    hungry = population;
-                }
-                else
-                {
-                    starving = 0;
-                    hungry += population - food;
-                    if(hungry < 0)
-                    {
-                        hungry = 0;
-                    }
-                }*/
-                Debug.Log("Hungry: " + hungry);
-                Debug.Log("Starving: " + starving);
+            if(population > foodThisRound)
+            {
+                _hungry = population - foodThisRound;
             }
 
             newPack = false;
