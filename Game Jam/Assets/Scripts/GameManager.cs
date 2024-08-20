@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// How many people are hungry
     /// </summary>
+    private float _bored;
     private float _hungry;
 
     public float entertainment;
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
             OnNewPack?.Invoke();
 
             float foodThisRound = food;
+            float funThisRound = entertainment;
+
             if(_hungry <= foodThisRound)
             {
                 foodThisRound -= _hungry;
@@ -94,6 +97,24 @@ public class GameManager : MonoBehaviour
             {
                 _hungry = population - foodThisRound;
             }
+
+            if(_bored <= funThisRound)
+            {
+                funThisRound -= _bored;
+                _bored = 0;
+            }
+            else
+            {
+                _bored -= funThisRound;
+                population -= _bored;
+                funThisRound = 0;
+            }
+
+            if(population > funThisRound)
+            {
+                _bored = population - funThisRound;
+            }
+            
 
             newPack = false;
         }
