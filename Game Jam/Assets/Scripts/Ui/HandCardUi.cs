@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private Vector2 _originalSize;
     private Card _card;
     private HandCardPanelUi _parent;
+    public UnityEvent OnPointerEnterEvent;
 
     public HandCardUi SetUp(Card card, HandCardPanelUi parent)
     {
@@ -42,6 +44,7 @@ public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         SetCardSize(1.2f);
+        OnPointerEnterEvent?.Invoke();
     }
 
     private void SetCardSize(float factor = 1.0f)
