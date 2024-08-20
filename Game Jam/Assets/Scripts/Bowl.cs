@@ -15,8 +15,11 @@ public class Bowl : MonoBehaviour
 
     public void AddWeight(Building building)
     {
-        _buildings.Add(building);
-        _parent.AddWeight(building.weight * _multiplicator);
+        if(!_buildings.Contains(building))
+        {
+            _buildings.Add(building);
+            _parent.AddWeight(building.weight * _multiplicator);
+        }
     }
 
     public void RemoveWeight(Building building)

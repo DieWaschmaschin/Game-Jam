@@ -15,13 +15,10 @@ public class Building : MonoBehaviour
     private bool off = false;
 
     private Bowl _bowl;
+    private bool _isAdded = false;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        if (_bowl != null)
-        {
-            return;
-        }
         RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down);
         foreach (RaycastHit hit in hits)
         {
@@ -29,7 +26,6 @@ public class Building : MonoBehaviour
             if (bowl != null)
             {
                 _bowl = bowl;
-                bowl.AddWeight(this);
             }
         }
     }
@@ -62,9 +58,18 @@ public class Building : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!_isAdded)
+        {
+            _bowl?.AddWeight(this);
+            _isAdded = true;
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "OffScale")
+        if (other.tag == "OffScale")
         {
             if(broken == false)
             {
