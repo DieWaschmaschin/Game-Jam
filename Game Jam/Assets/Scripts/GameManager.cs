@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     public float population;
     public float food;
-    private float foodPerRound;
     private float hungry;
     private float starving;
     
@@ -50,21 +49,37 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     {
+        Debug.Log(happiness);
+
         if(newPack == true)
         {
-            foodPerRound = food;
-            if(population > foodPerRound)
+            if(population > food)
             {
-                if(hungry - foodPerRound > 0)
+                if(hungry - food > 0)
                 {
                     starving = hungry - food;
-                
+                    hungry = population - food - starving;
                 }
-
-
-                hungry = population - foodPerRound;
-                Debug.Log("Hungry: " + hungry);
+                else if(hungry - food == 0)
+                {
+                    starving = 0;
+                    hungry = population;
+                }
+                else
+                {
+                    starving = 0;
+                    hungry += population - food;
+                    if(hungry < 0)
+                    {
+                        hungry = 0;
+                    }
+                }
+                /*Debug.Log("Hungry: " + hungry);
+                Debug.Log("Starving: " + starving);*/
             }
+
+
+
 
             
             newPack = false;

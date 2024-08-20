@@ -129,6 +129,8 @@ MonoBehaviour:
   population: 0
   food: 5
   entertainment: 0
+  brokenAngle: 30
+  z: 0
 --- !u!1 &6979369731528195425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: 0e04be5257521104ba15933e67a4e23d,
