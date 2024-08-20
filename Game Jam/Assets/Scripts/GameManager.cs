@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     {
-        Debug.Log(happiness);
-
         if(newPack == true)
         {
             if(population > food)

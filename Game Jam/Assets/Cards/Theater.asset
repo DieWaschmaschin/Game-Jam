@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77cff98e9fd44f438b281695ad4bdce, type: 3}
   m_Name: Theater
   m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 1175851909573093029, guid: d631c7564636af345ab905d085e8670f,
+    type: 3}
   artwork: {fileID: 21300000, guid: dd6b53aa65fe6604e97fb757822ca8ea, type: 3}
   name: Theater
   weight: 0
   population: 20
   food: 0
   entertainment: 0
-  scaleCard: 0
+  cardType: 0
+  scaleRange: {x: 0, y: 0}
+  scale: 0
   specialAbility: 1
