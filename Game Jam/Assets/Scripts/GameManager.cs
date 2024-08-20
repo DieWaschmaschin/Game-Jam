@@ -32,12 +32,19 @@ public class GameManager : MonoBehaviour
 
     public bool Build(Card card, Vector3 buildPosition)
     {
-        buildPosition.z = -Camera.main.transform.position.z;
-        Vector3 position = Camera.main.ScreenToWorldPoint(buildPosition);
-        position.z = 0f;
-        Instantiate(card.objectToSpawn, position, Quaternion.identity)
-            .GetComponent<Building>()
-            .AddStats();
+        if (card.cardType == CardType.Normal)
+        {
+            buildPosition.z = -Camera.main.transform.position.z;
+            Vector3 position = Camera.main.ScreenToWorldPoint(buildPosition);
+            position.z = 0f;
+            Instantiate(card.objectToSpawn, position, Quaternion.identity)
+                .GetComponent<Building>()
+                .AddStats();
+        }
+        else
+        {
+
+        }
         return true;
     }
 
@@ -45,9 +52,14 @@ public class GameManager : MonoBehaviour
     {
         if(newPack == true)
         {
+            foodPerRound = food;
             if(population > foodPerRound)
             {
-
+                if(hungry - foodPerRound > 0)
+                {
+                    starving = hungry - food;
+                
+                }
 
 
                 hungry = population - foodPerRound;
