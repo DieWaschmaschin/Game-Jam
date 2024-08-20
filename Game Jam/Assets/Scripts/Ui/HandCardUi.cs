@@ -74,22 +74,9 @@ public class HandCardUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         _pointerData?.Set(false, eventData.position);
         // If we can build there, we build the building and remove the card
-        if(build(eventData.position))
+        if(GameManager.Instance.Build(_card, eventData.position))
         {
             _parent.Remove(_card);
         }
-    }
-
-    /// <summary>
-    /// @todo: implement - but this should not be here, maybe a building manager?
-    /// </summary>
-    /// <returns></returns>
-    private bool build(Vector3 buildPosition)
-    {
-        buildPosition.z = -Camera.main.transform.position.z;
-        Vector3 position = Camera.main.ScreenToWorldPoint(buildPosition);
-        position.z = 0f;
-        Instantiate(_card.objectToSpawn, position, Quaternion.identity);
-        return true;
     }
 }

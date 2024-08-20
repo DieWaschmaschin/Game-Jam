@@ -64,5 +64,6 @@ public class GiveCardpacks : MonoBehaviour
         newCardpacks.Remove(lhs);
         Cardpack rhs = newCardpacks[Random.Range(0, newCardpacks.Count)];
         _currentCardpacks.Set(lhs, rhs);
+        GameManager.Instance.newPack = true;
     }
 }
