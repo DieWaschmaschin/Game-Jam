@@ -49,8 +49,7 @@ public class GameManager : MonoBehaviour
                 Building building = hitInfo.collider.GetComponent<Building>();
                 if(building != null)
                 {
-                    building.Scale(card.cardType, card.scale);
-                    return true;
+                    return building.Scale(card.cardType, card.scale);
                 }
             }
         }

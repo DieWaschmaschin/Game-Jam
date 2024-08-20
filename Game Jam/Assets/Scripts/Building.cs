@@ -56,8 +56,12 @@ public class Building : MonoBehaviour
         }
     }
 
-    public void Scale(CardType type, float scaleValue)
+    public bool Scale(CardType type, float scaleValue)
     {
+        if(off)
+        {
+            return false;
+        }
         Vector3 scale = transform.localScale;
         switch (type)
         {
@@ -71,5 +75,6 @@ public class Building : MonoBehaviour
                 throw new NotImplementedException();
         }
         transform.localScale = scale;
+        return true;
     }
 }
