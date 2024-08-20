@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Scale : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class Scale : MonoBehaviour
     private float _radius;
     [SerializeField]
     private Vector3 _bowlOffset;
+
+    [SerializeField]
+    private List<Rigidbody> _bodies = new List<Rigidbody>();
+    [SerializeField]
+    private float _explosionForce = 100f;
+    [SerializeField]
+    private float _explosionRadius = 10f;
 
     [SerializeField]
     private float _currentWeight = 0f;
@@ -32,6 +40,8 @@ public class Scale : MonoBehaviour
     [SerializeField]
     private AnimationCurve _curve;
 
+    public UnityEvent OnEndGame;
+
     private void Start()
     {
         _t = 1f;
@@ -46,8 +56,19 @@ public class Scale : MonoBehaviour
 
         if(_currentWeight < _weightRange.x || _currentWeight > _weightRange.y)
         {
-            //end game
+            EndGame();
         }
+    }
+
+    private void EndGame()
+    {
+        foreach (var b in _bodies)
+        {
+            b.isKinematic = false;
+            b.AddExplosionForce(_explosionForce, Vector3.forward, _explosionRadius);
+        }
+        OnEndGame?.Invoke();
+        enabled = false;
     }
 
     private void Update()

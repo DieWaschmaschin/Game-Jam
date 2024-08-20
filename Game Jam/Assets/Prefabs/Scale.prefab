@@ -54,6 +54,12 @@ MonoBehaviour:
   _rightBowl: {fileID: 5448705346486876299}
   _radius: 1.5
   _bowlOffset: {x: 0, y: 1, z: 0}
+  _bodies:
+  - {fileID: 8545661012732656205}
+  - {fileID: 4403265131424760046}
+  - {fileID: 8116496839082218340}
+  _explosionForce: 250
+  _explosionRadius: 5
   _currentWeight: 0
   _weightRange: {x: -100, y: 100}
   _scaleAmplitude: 44
@@ -596,8 +602,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bb351933ff65fa45a3d3069615df16d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8116496839082218340}
   m_SourcePrefab: {fileID: 100100000, guid: 6bb351933ff65fa45a3d3069615df16d, type: 3}
+--- !u!1 &5937077895418856427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bb351933ff65fa45a3d3069615df16d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6820091622325157562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8116496839082218340
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937077895418856427}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &6426474281096681809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bb351933ff65fa45a3d3069615df16d,
