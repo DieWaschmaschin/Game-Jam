@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             buildPosition.z = -Camera.main.transform.position.z;
             Vector3 position = Camera.main.ScreenToWorldPoint(buildPosition);
             position.z = 0f;
-            Instantiate(card.objectToSpawn, position, Quaternion.identity)
+            Instantiate(card.objectToSpawn, position, Quaternion.identity, transform)
                 .GetComponent<Building>()
                 .AddStats();
             return true;
