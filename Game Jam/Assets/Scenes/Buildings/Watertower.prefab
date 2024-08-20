@@ -71,6 +71,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -8685385489844931628}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a0807988784bf37469cc55beac35496e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5084262689019051350}
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: a0807988784bf37469cc55beac35496e,
         type: 3}
       insertIndex: -1
@@ -95,7 +99,7 @@ Rigidbody:
   m_GameObject: {fileID: 164183275657720378}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -113,6 +117,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!114 &5084262689019051350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164183275657720378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ee9ba24a95edc459acd17fafde8cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0
+  population: 0
+  food: 5
+  entertainment: 0
 --- !u!1 &457055142418918147 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: a0807988784bf37469cc55beac35496e,
