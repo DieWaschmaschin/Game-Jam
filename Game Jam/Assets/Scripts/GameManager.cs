@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     /// How many people are hungry
     /// </summary>
     private float _bored;
+    public float Bored => _bored;
     private float _hungry;
+    public float Hungry => _hungry;
 
     public float entertainment;
     public float happiness;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnNewPack;
     public UnityEvent OnBuild;
     public UnityEvent OnEndGame;
+
+    public float Highscore;
 
     private void Awake()
     {
@@ -73,13 +77,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(population > Highscore)
+        {
+            Highscore = population;
+        }
+
         if(newPack == true)
         {
             OnNewPack?.Invoke();
 
             float foodThisRound = food;
             float funThisRound = entertainment;
-
             if(_hungry <= foodThisRound)
             {
                 foodThisRound -= _hungry;
@@ -113,7 +121,8 @@ public class GameManager : MonoBehaviour
             {
                 _bored = population - funThisRound;
             }
-            
+
+            population = Mathf.Max(population, 0f);
 
             newPack = false;
         }
