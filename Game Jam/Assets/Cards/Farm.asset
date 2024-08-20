@@ -16,9 +16,11 @@ MonoBehaviour:
     type: 3}
   artwork: {fileID: 21300000, guid: 76c1f02fcfdabe146ad91a2d5b835fbe, type: 3}
   name: Farm
-  weight: 10
+  weight: 5
   population: 0
-  food: 20
+  food: 10
   entertainment: 0
-  scaleCard: 0
+  cardType: 0
+  scaleRange: {x: 0, y: 0}
+  scale: 0
   specialAbility: 0

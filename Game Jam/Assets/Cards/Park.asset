@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 3}
   artwork: {fileID: 21300000, guid: 9cee7bfb38e449c438147dcddc7511e7, type: 3}
   name: Park
-  weight: 0
+  weight: 5
   population: 0
   food: 0
   entertainment: 10

@@ -16,10 +16,10 @@ MonoBehaviour:
     type: 3}
   artwork: {fileID: 21300000, guid: 5efe55218ab0d6644bf26e6c424a75a4, type: 3}
   name: Amusment Park
-  weight: 0
+  weight: 15
   population: 0
   food: 0
-  entertainment: 35
+  entertainment: 20
   cardType: 0
   scaleRange: {x: 0, y: 0}
   scale: 0
