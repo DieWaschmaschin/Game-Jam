@@ -27,4 +27,12 @@ public class Bowl : MonoBehaviour
         _buildings.Remove(building);
         _parent.AddWeight(building.weight *_multiplicator * -1f);
     }
+
+    public void UpdateWeight(Building building, float scale)
+    {
+        if(_buildings.Contains(building))
+        {
+            _parent.AddWeight(building.weight * (scale - 1f) * _multiplicator);
+        }
+    }
 }

@@ -33,9 +33,7 @@ public class Building : MonoBehaviour
     public void AddStats(Card card)
     {
         weight = card.weight;
-        GameManager.Instance.population += population;
-        GameManager.Instance.food += food;
-        GameManager.Instance.entertainment += entertainment;
+        AddStats();
     }
 
     void Update()
@@ -43,19 +41,29 @@ public class Building : MonoBehaviour
         if(Vector3.Angle(Vector3.up, transform.up) >= brokenAngle && broken == false && off == false)
         {
             Debug.Log("Broken");
-            GameManager.Instance.population -= population;
-            GameManager.Instance.food -= food;
-            GameManager.Instance.entertainment -= entertainment;
+            RemoveStats();
             broken = true;
         }
         if(Vector3.Angle(Vector3.up, transform.up) <= brokenAngle && broken == true && off == false)
         {
             Debug.Log("Repaired");
-            GameManager.Instance.population += population;
-            GameManager.Instance.food += food;
-            GameManager.Instance.entertainment += entertainment;
+            AddStats();
             broken = false;
         }
+    }
+
+    private void AddStats()
+    {
+        GameManager.Instance.population += population;
+        GameManager.Instance.food += food;
+        GameManager.Instance.entertainment += entertainment;
+    }
+
+    private void RemoveStats()
+    {
+        GameManager.Instance.population -= population;
+        GameManager.Instance.food -= food;
+        GameManager.Instance.entertainment -= entertainment;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -90,17 +98,25 @@ public class Building : MonoBehaviour
             return false;
         }
         Vector3 scale = transform.localScale;
+        float correctScale = 1 + scaleValue / 100f;
         switch (type)
         {
             case CardType.ScaleHeight:
-                scale.y *= 1 + scaleValue / 100f;
+                scale.y *= correctScale;
                 break;
             case CardType.ScaleWidth:
-                scale.x *= 1 + scaleValue / 100f;
+                scale.x *= correctScale;
                 break;
             default:
                 throw new NotImplementedException();
         }
+        RemoveStats();
+        weight *= correctScale;
+        population *= correctScale;
+        food *= correctScale;
+        entertainment *= correctScale;
+        AddStats();
+        _bowl?.UpdateWeight(this, correctScale);
         transform.localScale = scale;
         return true;
     }
