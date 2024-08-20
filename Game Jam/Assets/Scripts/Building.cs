@@ -33,6 +33,9 @@ public class Building : MonoBehaviour
     public void AddStats(Card card)
     {
         weight = card.weight;
+        population = card.population;
+        food = card.food;
+        entertainment = card.entertainment;
         AddStats();
     }
 

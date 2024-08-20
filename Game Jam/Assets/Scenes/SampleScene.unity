@@ -2530,7 +2530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5202989f401b845a206b0d06292792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstCardpack: {fileID: 11400000, guid: 5b875738b44725a4a92470a3991ff8f6, type: 2}
+  _firstCardpack: {fileID: 11400000, guid: 5c1c82866ef7c914aab4ec624c0de9d4, type: 2}
   _handCards: {fileID: 11400000, guid: adc7bfe47796a634c841629a1a16db76, type: 2}
   _currentCardpacks: {fileID: 11400000, guid: fc1770d7501802047af1fd1cd2d697e2, type: 2}
   _cardpacks:

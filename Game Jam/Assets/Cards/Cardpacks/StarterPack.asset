@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404406504cf99be4eaf278e06cbf9bb0, type: 3}
+  m_Name: StarterPack
+  m_EditorClassIdentifier: 
+  artwork: {fileID: 21300000, guid: bf351e4063349e649a603ed2b3cc1a84, type: 3}
+  name: housing
+  PossibleCards: []
+  AdditionalCards:
+  - {fileID: 11400000, guid: f3ab9288e083e7940b80f891138b4959, type: 2}
+  - {fileID: 11400000, guid: e1fae24105ee50f4da89f13d63e2104f, type: 2}
+  MandatoryCards:
+  - {fileID: 11400000, guid: 44bd5da78f073a4478580484654640a0, type: 2}
+  - {fileID: 11400000, guid: 0619f2ac541bda24eaddacc98c745608, type: 2}
+  - {fileID: 11400000, guid: b1d808fc570a1c448b9130ec2a9281e8, type: 2}
