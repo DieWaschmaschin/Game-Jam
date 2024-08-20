@@ -39,15 +39,25 @@ public class GameManager : MonoBehaviour
             Instantiate(card.objectToSpawn, position, Quaternion.identity)
                 .GetComponent<Building>()
                 .AddStats();
+            return true;
         }
         else
         {
-
+            Ray ray = Camera.main.ScreenPointToRay(buildPosition);
+            if(Physics.Raycast(ray, out RaycastHit hitInfo))
+            {
+                Building building = hitInfo.collider.GetComponent<Building>();
+                if(building != null)
+                {
+                    building.Scale(card.cardType, card.scale);
+                    return true;
+                }
+            }
         }
-        return true;
+        return false;
     }
 
-    private void Update() 
+    private void Update()
     {
         if(newPack == true)
         {
@@ -76,10 +86,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Starving: " + starving);*/
             }
 
-
-
-
-            
             newPack = false;
         }
     }

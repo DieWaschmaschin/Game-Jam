@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,6 @@ public class Building : MonoBehaviour
         GameManager.Instance.entertainment += entertainment;
     }
 
-    
     void Update()
     {
         if(Vector3.Angle(Vector3.up, transform.up) >= brokenAngle && broken == false && off == false)
@@ -49,10 +49,27 @@ public class Building : MonoBehaviour
             {
                 GameManager.Instance.population -= population;
                 GameManager.Instance.food -= food;
-                GameManager.Instance.entertainment -= entertainment;                
+                GameManager.Instance.entertainment -= entertainment;
             }
             GameManager.Instance.happiness -= 10;
             off = true;
         }
+    }
+
+    public void Scale(CardType type, float scaleValue)
+    {
+        Vector3 scale = transform.localScale;
+        switch (type)
+        {
+            case CardType.ScaleHeight:
+                scale.y *= 1 + scaleValue / 100f;
+                break;
+            case CardType.ScaleWidth:
+                scale.x *= 1 + scaleValue / 100f;
+                break;
+            default:
+                throw new NotImplementedException();
+        }
+        transform.localScale = scale;
     }
 }

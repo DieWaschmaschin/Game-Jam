@@ -20,12 +20,12 @@ public class Cardpack : ScriptableObject
             cards.Add(Instantiate(randomCard));
         }
 
-        /*List<Card> additionalCards = new List<Card>();
+        List<Card> additionalCards = new List<Card>();
         for (int i = 0; i < 2; i++)
         {
             Card randomCard = AdditionalCards[Random.Range(0, AdditionalCards.Count)];
             cards.Add(Instantiate(randomCard).Collapse());
-        }*/
+        }
         return cards;
     }
 }
